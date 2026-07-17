@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What? Office | 事業用不動産仲介</title>
+  <meta name="description" content="What? Officeは、Webサイトを中心に情報発信を行いながら、オフィス・店舗の物件探しから契約までをサポートする事業用不動産仲介会社です。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --ink: #161513;
+  --paper: #f6f4ef;
+  --surface: #ffffff;
+  --muted: #6f6a60;
+  --muted-light: #9b968c;
+  --line: #ede9e1;
+  --line-strong: #e3dfd6;
+  --accent: #60766a;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 26px 72px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+}
+
+.brand-name {
+  color: var(--ink);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.nav a {
+  padding: 4px 0;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  color: var(--ink);
+}
+
+.hero {
+  position: relative;
+  padding: 172px 64px 120px;
+  overflow: hidden;
+  text-align: center;
+  isolation: isolate;
+}
+
+.hero-image,
+.hero-overlay {
+  display: none;
+}
+
+.hero-inner {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 14px;
+  color: var(--muted-light);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.32em;
+}
+
+.hero .eyebrow {
+  margin-bottom: 48px;
+  letter-spacing: 0.34em;
+}
+
+.hero-title {
+  display: block;
+  max-width: 760px;
+  margin: 0 auto 40px;
+  font-family: "Space Grotesk", "Noto Sans JP", sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.hero-title span {
+  display: block;
+}
+
+.title-set {
+  display: grid;
+  gap: 0;
+}
+
+.hero-title .title-mobile {
+  display: none;
+}
+
+.hero-copy {
+  max-width: 480px;
+  margin: 0 auto 48px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2.1;
+}
+
+.hero-copy span {
+  display: block;
+}
+
+.hero-copy span:first-child {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: fit-content;
+  min-height: 50px;
+  margin-top: 0;
+  padding: 15px 30px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.button-link:hover,
+.button-link:focus-visible,
+.button-link.dark:hover,
+.button-link.dark:focus-visible {
+  background: var(--ink);
+  color: #fff;
+}
+
+.button-link.dark {
+  min-height: 54px;
+  padding: 17px 34px;
+  background: var(--ink);
+  color: #fff;
+}
+
+.button-link.dark:hover,
+.button-link.dark:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.button-arrow {
+  font-family: "Space Grotesk", sans-serif;
+  line-height: 1;
+}
+
+.visual-strip {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 280px;
+  overflow: hidden;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.visual-strip img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.visual-strip img + img {
+  display: none;
+}
+
+.section {
+  padding: 112px 64px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.section-muted,
+.contact-section {
+  background: var(--paper);
+  border-top: 1px solid #e7e3da;
+}
+
+.section-inner {
+  width: min(100%, 1040px);
+  margin: 0 auto;
+}
+
+.intro-band,
+.intro-grid {
+  display: none;
+}
+
+.section-heading {
+  margin: 0 0 64px;
+  text-align: center;
+}
+
+.section-subtitle {
+  margin: -8px 0 22px;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.section-title {
+  margin: 0;
+  font-family: "Newsreader", "Noto Sans JP", serif;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+.lead-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 48px;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.service-item {
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.service-item:only-child {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.service-number {
+  display: block;
+  margin-bottom: 16px;
+  color: #b6b0a3;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.service-item h3 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.service-item p,
+.body-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.95;
+}
+
+.service-item p + p,
+.body-copy p + p {
+  margin-top: 18px;
+}
+
+.about-layout {
+  display: block;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.image-panel {
+  display: none;
+}
+
+.about-copy {
+  max-width: none;
+}
+
+.about-copy .section-title {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 36px;
+  line-height: 1.6;
+}
+
+.body-copy {
+  display: grid;
+  gap: 14px;
+  max-width: 640px;
+  margin: 36px auto 0;
+}
+
+.body-copy p {
+  color: #5f5b53;
+  font-size: 15px;
+  line-height: 2.2;
+}
+
+.company-layout {
+  display: block;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.company-layout .section-heading {
+  margin-bottom: 52px;
+}
+
+.company-list {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  row-gap: 20px;
+  column-gap: 24px;
+  margin: 0;
+  text-align: left;
+  font-size: 14px;
+}
+
+.company-row {
+  display: contents;
+}
+
+.company-row dt {
+  color: var(--muted-light);
+  font-weight: 400;
+}
+
+.company-row dd {
+  margin: 0;
+}
+
+.contact-layout {
+  display: block;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.contact-section .section-heading {
+  margin-bottom: 0;
+}
+
+.contact-section .section-title {
+  margin-bottom: 16px;
+  font-size: 40px;
+}
+
+.contact-action {
+  display: grid;
+  justify-items: center;
+  gap: 28px;
+}
+
+.contact-action .lead-text {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.site-footer {
+  padding: 44px 72px;
+  background: var(--ink);
+  color: #cfcabf;
+  font-size: 11px;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+
+.footer-inner span:first-child {
+  color: #fff;
+  font-family: "Newsreader", serif;
+  font-size: 18px;
+}
+
+.footer-inner span:last-child {
+  color: #8d887d;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.options-page {
+  background: var(--surface);
+}
+
+.options-hero {
+  padding-bottom: 56px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.option-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.option-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.option-card figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.option-card strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+@media (max-width: 860px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 22px 20px;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px 20px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    white-space: nowrap;
+  }
+
+  .hero {
+    padding: 96px 20px 78px;
+    text-align: left;
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 32px;
+  }
+
+  .hero-title {
+    font-size: clamp(42px, 12vw, 56px);
+    line-height: 1.45;
+  }
+
+  .hero-inner,
+  .hero-title,
+  .hero-copy {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero-title .title-desktop {
+    display: none;
+  }
+
+  .hero-title .title-mobile {
+    display: grid;
+  }
+
+  .section {
+    padding: 86px 20px;
+    text-align: left;
+  }
+
+  .section-heading {
+    text-align: left;
+  }
+
+  .visual-strip,
+  .visual-strip img {
+    height: 220px;
+  }
+
+  .service-grid,
+  .options-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    max-width: 520px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .about-layout,
+  .company-layout,
+  .contact-layout,
+  .about-copy .section-title,
+  .body-copy,
+  .contact-action .lead-text {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .about-copy .section-title {
+    font-size: 32px;
+  }
+
+  .company-list {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+  }
+
+  .company-row dt {
+    margin-top: 16px;
+  }
+
+  .company-row:first-child dt {
+    margin-top: 0;
+  }
+
+  .contact-action {
+    justify-items: start;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-mark {
+    width: 24px;
+    height: 24px;
+  }
+
+  .brand-name {
+    font-size: 12px;
+  }
+
+  .nav {
+    font-size: 12px;
+  }
+
+  .hero-copy,
+  .body-copy p,
+  .lead-text {
+    font-size: 13px;
+  }
+
+  .button-link {
+    width: 100%;
+  }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="What? Office">
+      <img src="data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%221.0%22%3F%3E%0A%3Csvg%20id%3D%22_%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC_1%22%20data-name%3D%22%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%201%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20600%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Cpath%20class%3D%22cls-1%22%20d%3D%22M376.02%2C247.21l-51.97%2C150.27h-5.5l-42.48-119.2-42.21%2C119.2h-4.95l-55.41-154.8c-4.22-11.73-6.83-18.56-7.84-20.48-1.83-3.48-4.31-6.07-7.42-7.77-3.12-1.69-7.42-2.54-12.92-2.54v-5.09h69.02v5.09h-3.3c-4.95%2C0-8.68%2C1.1-11.21%2C3.3-2.52%2C2.2-3.78%2C4.86-3.78%2C7.97%2C0%2C1.56.48%2C4.19%2C1.44%2C7.91.96%2C3.71%2C2.5%2C8.45%2C4.61%2C14.23l36.71%2C104.62%2C30.93-88.95-9.9-28.18c-1.47-3.39-2.96-6.37-4.47-8.94-1.51-2.57-3.25-4.74-5.22-6.53-1.97-1.79-4.26-3.14-6.87-4.06-2.61-.92-5.75-1.37-9.42-1.37v-5.09h72.59v5.09h-4.95c-5.22%2C0-9.01%2C1.08-11.34%2C3.23-2.34%2C2.15-3.51%2C5.16-3.51%2C9%2C0%2C4.67%2C2.06%2C12.83%2C6.19%2C24.47l35.75%2C101.32%2C35.47-102.7c4.03-11.55%2C6.05-19.43%2C6.05-23.65%22%3E%3C%2Fpath%3E%0A%20%20%3Cpath%20class%3D%22cls-1%22%20d%3D%22M403.4%2C349.22h-5.64c.73-11.73%2C2.15-21.26%2C4.26-28.6%2C1.1-3.85%2C2.84-8.39%2C5.22-13.61%2C2.38-5.22%2C5.31-11.23%2C8.8-18.01%2C2.66-5.22%2C4.9-9.81%2C6.74-13.75%2C1.83-3.94%2C3.16-7.29%2C3.99-10.04%2C1.65-5.59%2C2.47-11.23%2C2.47-16.91s-.85-11.02-2.54-15.74c-1.7-4.72-3.99-8.73-6.87-12.03-2.89-3.3-6.28-5.84-10.17-7.63-3.9-1.79-8.04-2.68-12.44-2.68-4.03%2C0-7.63.53-10.79%2C1.58-3.16%2C1.05-5.84%2C2.43-8.04%2C4.12-2.2%2C1.7-3.9%2C3.6-5.09%2C5.7-1.19%2C2.11-1.79%2C4.26-1.79%2C6.46%2C0%2C1.56.43%2C3.46%2C1.31%2C5.71.87%2C2.25%2C1.81%2C4.51%2C2.82%2C6.8%2C1.01%2C2.29%2C1.95%2C4.47%2C2.82%2C6.53.87%2C2.06%2C1.31%2C3.64%2C1.31%2C4.74%2C0%2C3.3-1.06%2C6.07-3.16%2C8.32-2.11%2C2.25-4.67%2C3.37-7.7%2C3.37-1.92%2C0-3.8-.48-5.64-1.44-1.83-.96-3.46-2.38-4.88-4.26-1.42-1.88-2.57-4.15-3.44-6.8-.87-2.66-1.31-5.68-1.31-9.07%2C0-5.04%2C1.14-9.94%2C3.44-14.71%2C2.29-4.76%2C5.57-8.98%2C9.83-12.65%2C4.26-3.67%2C9.46-6.6%2C15.6-8.8%2C6.14-2.2%2C13.01-3.3%2C20.62-3.3%2C8.06%2C0%2C15.28%2C1.15%2C21.65%2C3.44%2C6.37%2C2.29%2C11.78%2C5.39%2C16.22%2C9.28%2C4.45%2C3.9%2C7.84%2C8.48%2C10.17%2C13.75%2C2.34%2C5.27%2C3.51%2C10.89%2C3.51%2C16.84%2C0%2C6.78-1.51%2C13.66-4.54%2C20.62-1.56%2C3.48-3.71%2C7.31-6.46%2C11.48-2.75%2C4.17-6.23%2C8.64-10.45%2C13.4-13.2%2C14.85-21.36%2C25.53-24.47%2C32.03-2.84%2C6.14-4.63%2C14.76-5.36%2C25.85ZM401.47%2C366.27c4.4%2C0%2C8.06%2C1.47%2C11%2C4.4%2C2.93%2C2.93%2C4.4%2C6.6%2C4.4%2C11%2C0%2C2.11-.41%2C4.08-1.24%2C5.91-.82%2C1.84-1.92%2C3.44-3.3%2C4.81-1.37%2C1.37-3%2C2.47-4.88%2C3.3-1.88.82-3.87%2C1.24-5.98%2C1.24s-4.08-.41-5.91-1.24c-1.83-.82-3.44-1.92-4.81-3.3-1.37-1.37-2.47-2.98-3.3-4.81-.82-1.83-1.24-3.8-1.24-5.91s.41-4.24%2C1.24-6.12c.82-1.88%2C1.92-3.51%2C3.3-4.88%2C1.37-1.37%2C2.98-2.45%2C4.81-3.23%2C1.83-.78%2C3.8-1.17%2C5.91-1.17Z%22%3E%3C%2Fpath%3E%0A%3C%2Fsvg%3E" alt="" class="brand-mark">
+      <span class="brand-name">What? Office</span>
+    </a>
+    <nav class="nav" aria-label="主要ナビゲーション" id="site-nav"></nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" id="hero-image" src="" alt="">
+      <div class="hero-overlay"></div>
+      <div class="hero-inner">
+        <p class="eyebrow" id="hero-kicker"></p>
+        <h1 class="hero-title" id="hero-title"></h1>
+        <p class="hero-copy" id="hero-copy"></p>
+        <a class="button-link" id="hero-cta" href="#contact">
+          <span>お問い合わせ</span>
+          <span aria-hidden="true" class="button-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="visual-strip" aria-label="物件イメージ">
+      <img id="strip-image-a" src="" alt="">
+      <img id="strip-image-b" src="" alt="">
+    </section>
+
+    <section class="section section-muted" id="about" aria-labelledby="about-title">
+      <div class="section-inner about-layout">
+        <figure class="image-panel">
+          <img id="about-image" src="" alt="">
+        </figure>
+        <div class="about-copy">
+          <p class="section-kicker" id="about-kicker"></p>
+          <p class="section-subtitle" id="about-subtitle"></p>
+          <h2 class="section-title" id="about-title"></h2>
+          <div class="body-copy" id="about-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="section-kicker">What We Do</p>
+          <p class="section-subtitle">私たちの事業</p>
+          <h2 class="section-title" id="services-title">事業用不動産仲介</h2>
+        </div>
+        <div class="service-grid" id="services-list"></div>
+      </div>
+    </section>
+
+    <section class="section" id="company" aria-labelledby="company-title">
+      <div class="section-inner company-layout">
+        <div class="section-heading">
+          <p class="section-kicker">What We Are</p>
+          <p class="section-subtitle">会社概要</p>
+          <h2 class="section-title" id="company-title">会社概要</h2>
+        </div>
+        <dl class="company-list" id="company-list"></dl>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="section-inner contact-layout">
+        <div>
+          <p class="section-kicker">What Is Next</p>
+          <p class="section-subtitle">お問い合わせ</p>
+          <h2 class="section-title" id="contact-title">お問い合わせ</h2>
+        </div>
+        <div class="contact-action">
+          <p class="lead-text" id="contact-lead"></p>
+          <a class="button-link dark" id="contact-link" href="#" target="_blank" rel="noopener">
+            <span>お問い合わせフォームへ</span>
+            <span aria-hidden="true" class="button-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>What? Office</span>
+      <span>© <span id="footer-year"></span> WHAT OFFICE Inc.</span>
+    </div>
+  </footer>
+
+  <script>
+window.WHAT_OFFICE_CONTENT = {
+  nav: [
+    { label: "私たちについて", href: "#about" },
+    { label: "事業内容", href: "#services" },
+    { label: "会社概要", href: "#company" },
+    { label: "お問い合わせ", href: "#contact" }
+  ],
+
+  hero: {
+    visualId: "candidate01",
+    kicker: "W?",
+    titleLines: ["What? Office"],
+    mobileTitleLines: ["What? Office"],
+    copyLines: ["未来を想像できること。", "事業用不動産仲介。"]
+  },
+
+  about: {
+    visualId: "candidate04",
+    kicker: "What We Value",
+    subtitle: "What? Officeの考え方",
+    title: "未来を想像できることが、納得のいく決断につながる。",
+    paragraphs: [
+      "私たちは、そう考えています。",
+      "物件を探す時に知りたいのは、賃料や面積だけではありません。",
+      "その場所で働く毎日や、街の雰囲気。自分たちに合う空間かどうか。",
+      "未来を想像するために、本質を見極め、必要な情報を誠実に届けます。それは、Webサイトでも、実際にお会いした時でも変わりません。やるべきことをやり切って、最後は自信を持って委ねます。",
+      "自分たちらしい選択を、納得して決断できる状態をつくること。",
+      "それが、What? Officeです。"
+    ]
+  },
+
+  services: [
+    {
+      title: "事業用不動産仲介",
+      text: "What? Officeは、Webサイトを中心に情報発信を行いながら、オフィス・店舗の物件探しから契約までをサポートしています。"
+    }
+  ],
+
+  company: [
+    ["商号", "ワットオフィス株式会社"],
+    ["所在地", "〒150-0012 東京都渋谷区広尾1-7-20 DOTビル3F-O号室"],
+    ["設立", "2026年6月1日"],
+    ["資本金", "500万円"],
+    ["事業内容", "事業用不動産仲介"],
+    ["宅建免許番号", "申請中"],
+    ["代表者", "岸田 真樹"],
+    ["連絡先", "Tel 03-6698-5857 / info@what-office.com"]
+  ],
+
+  contact: {
+    lead: "ご相談やご質問など、お気軽にお問い合わせください。",
+    formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfHEVKYzFPT60Jy8fJ1yUKx_s0H3RYhanuqKmNBIEajtM0prA/viewform"
+  },
+
+  visualSlots: {
+    stripA: "candidate01",
+    stripB: "candidate02"
+  },
+
+  visuals: [
+    {
+      id: "candidate01",
+      label: "候補 1",
+      title: "外観・通り沿い",
+      src: "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201800%20620%22%20role%3D%22img%22%20aria-labelledby%3D%22title%20desc%22%3E%0A%20%20%3Ctitle%20id%3D%22title%22%3EWhat%20Office%20building%20visual%3C%2Ftitle%3E%0A%20%20%3Cdesc%20id%3D%22desc%22%3EA%20quiet%20street-level%20office%20facade%20with%20warm%20interior%20light%20and%20greenery.%3C%2Fdesc%3E%0A%20%20%3Crect%20width%3D%221800%22%20height%3D%22620%22%20fill%3D%22%23ece8df%22%2F%3E%0A%20%20%3Crect%20y%3D%22420%22%20width%3D%221800%22%20height%3D%22200%22%20fill%3D%22%23d8d2c7%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20420h1800%22%20stroke%3D%22%23c8c1b5%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%3Crect%20x%3D%220%22%20y%3D%2270%22%20width%3D%22520%22%20height%3D%22350%22%20fill%3D%22%23d7d1c8%22%2F%3E%0A%20%20%3Crect%20x%3D%2272%22%20y%3D%22118%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23b7b7ad%22%2F%3E%0A%20%20%3Crect%20x%3D%22232%22%20y%3D%22118%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23b7b7ad%22%2F%3E%0A%20%20%3Crect%20x%3D%2272%22%20y%3D%22250%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23c0bfb4%22%2F%3E%0A%20%20%3Crect%20x%3D%22232%22%20y%3D%22250%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23c0bfb4%22%2F%3E%0A%20%20%3Crect%20x%3D%22448%22%20y%3D%2244%22%20width%3D%22980%22%20height%3D%22376%22%20fill%3D%22%23cfc8bc%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M490%20112h870%22%20stroke%3D%22%239c968d%22%20stroke-width%3D%2218%22%2F%3E%0A%20%20%3Crect%20x%3D%22545%22%20y%3D%22166%22%20width%3D%22300%22%20height%3D%22254%22%20fill%3D%22%232f302d%22%2F%3E%0A%20%20%3Crect%20x%3D%22860%22%20y%3D%22166%22%20width%3D%22300%22%20height%3D%22254%22%20fill%3D%22%23242522%22%2F%3E%0A%20%20%3Crect%20x%3D%221175%22%20y%3D%22166%22%20width%3D%22220%22%20height%3D%22254%22%20fill%3D%22%23272823%22%2F%3E%0A%20%20%3Crect%20x%3D%22575%22%20y%3D%22190%22%20width%3D%22244%22%20height%3D%22206%22%20fill%3D%22%23e3c895%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%3Crect%20x%3D%22889%22%20y%3D%22190%22%20width%3D%22244%22%20height%3D%22206%22%20fill%3D%22%23dcbf83%22%20opacity%3D%22.7%22%2F%3E%0A%20%20%3Crect%20x%3D%221203%22%20y%3D%22190%22%20width%3D%22164%22%20height%3D%22206%22%20fill%3D%22%2393a08f%22%20opacity%3D%22.45%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M545%20166h850M545%20420h850M845%20166v254M1160%20166v254%22%20stroke%3D%22%23151513%22%20stroke-width%3D%2210%22%2F%3E%0A%20%20%3Crect%20x%3D%221425%22%20y%3D%2292%22%20width%3D%22375%22%20height%3D%22328%22%20fill%3D%22%23b7b6ad%22%2F%3E%0A%20%20%3Crect%20x%3D%221490%22%20y%3D%22142%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%238f9890%22%2F%3E%0A%20%20%3Crect%20x%3D%221640%22%20y%3D%22142%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%238f9890%22%2F%3E%0A%20%20%3Crect%20x%3D%221490%22%20y%3D%22270%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%23838d86%22%2F%3E%0A%20%20%3Crect%20x%3D%221640%22%20y%3D%22270%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%23838d86%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20510c210-38%20402-45%20590-25%20230%2024%20450%2052%20690%2022%20174-22%20352-43%20520-24v137H0z%22%20fill%3D%22%23c7c0b4%22%2F%3E%0A%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%236f7f6d%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M145%20430c-18-72%204-144%2028-212%22%20stroke-width%3D%228%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M188%20430c-10-90%2020-176%2064-246%22%20stroke-width%3D%227%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M151%20268c-44-18-80-18-124%200M161%20310c-47-7-83%204-119%2029M174%20238c30-34%2064-50%20116-48M184%20300c46-24%2088-27%20140-4%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M1550%20430c-22-86%200-174%2044-256M1595%20430c-4-74%2022-142%2074-210%22%20stroke-width%3D%228%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M1570%20270c-44-20-84-18-124%207M1590%20318c-52-7-92%207-130%2042M1607%20245c38-34%2080-46%20138-36M1620%20310c54-24%20102-24%20156%206%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Cg%20fill%3D%22%23839179%22%20opacity%3D%22.9%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2228%22%20cy%3D%22268%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2274%22%20cy%3D%22254%22%20r%3D%2212%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22126%22%20cy%3D%22274%22%20r%3D%2215%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22264%22%20cy%3D%22190%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22204%22%20r%3D%2211%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221446%22%20cy%3D%22276%22%20r%3D%2215%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221496%22%20cy%3D%22258%22%20r%3D%2212%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221743%22%20cy%3D%22210%22%20r%3D%2217%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221778%22%20cy%3D%22320%22%20r%3D%2214%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A"
+    },
+    {
+      id: "candidate02",
+      label: "候補 2",
+      title: "外観・ファサード",
+      src: "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201800%20620%22%20role%3D%22img%22%20aria-labelledby%3D%22title%20desc%22%3E%0A%20%20%3Ctitle%20id%3D%22title%22%3EWhat%20Office%20building%20visual%3C%2Ftitle%3E%0A%20%20%3Cdesc%20id%3D%22desc%22%3EA%20quiet%20street-level%20office%20facade%20with%20warm%20interior%20light%20and%20greenery.%3C%2Fdesc%3E%0A%20%20%3Crect%20width%3D%221800%22%20height%3D%22620%22%20fill%3D%22%23ece8df%22%2F%3E%0A%20%20%3Crect%20y%3D%22420%22%20width%3D%221800%22%20height%3D%22200%22%20fill%3D%22%23d8d2c7%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20420h1800%22%20stroke%3D%22%23c8c1b5%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%3Crect%20x%3D%220%22%20y%3D%2270%22%20width%3D%22520%22%20height%3D%22350%22%20fill%3D%22%23d7d1c8%22%2F%3E%0A%20%20%3Crect%20x%3D%2272%22%20y%3D%22118%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23b7b7ad%22%2F%3E%0A%20%20%3Crect%20x%3D%22232%22%20y%3D%22118%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23b7b7ad%22%2F%3E%0A%20%20%3Crect%20x%3D%2272%22%20y%3D%22250%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23c0bfb4%22%2F%3E%0A%20%20%3Crect%20x%3D%22232%22%20y%3D%22250%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23c0bfb4%22%2F%3E%0A%20%20%3Crect%20x%3D%22448%22%20y%3D%2244%22%20width%3D%22980%22%20height%3D%22376%22%20fill%3D%22%23cfc8bc%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M490%20112h870%22%20stroke%3D%22%239c968d%22%20stroke-width%3D%2218%22%2F%3E%0A%20%20%3Crect%20x%3D%22545%22%20y%3D%22166%22%20width%3D%22300%22%20height%3D%22254%22%20fill%3D%22%232f302d%22%2F%3E%0A%20%20%3Crect%20x%3D%22860%22%20y%3D%22166%22%20width%3D%22300%22%20height%3D%22254%22%20fill%3D%22%23242522%22%2F%3E%0A%20%20%3Crect%20x%3D%221175%22%20y%3D%22166%22%20width%3D%22220%22%20height%3D%22254%22%20fill%3D%22%23272823%22%2F%3E%0A%20%20%3Crect%20x%3D%22575%22%20y%3D%22190%22%20width%3D%22244%22%20height%3D%22206%22%20fill%3D%22%23e3c895%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%3Crect%20x%3D%22889%22%20y%3D%22190%22%20width%3D%22244%22%20height%3D%22206%22%20fill%3D%22%23dcbf83%22%20opacity%3D%22.7%22%2F%3E%0A%20%20%3Crect%20x%3D%221203%22%20y%3D%22190%22%20width%3D%22164%22%20height%3D%22206%22%20fill%3D%22%2393a08f%22%20opacity%3D%22.45%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M545%20166h850M545%20420h850M845%20166v254M1160%20166v254%22%20stroke%3D%22%23151513%22%20stroke-width%3D%2210%22%2F%3E%0A%20%20%3Crect%20x%3D%221425%22%20y%3D%2292%22%20width%3D%22375%22%20height%3D%22328%22%20fill%3D%22%23b7b6ad%22%2F%3E%0A%20%20%3Crect%20x%3D%221490%22%20y%3D%22142%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%238f9890%22%2F%3E%0A%20%20%3Crect%20x%3D%221640%22%20y%3D%22142%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%238f9890%22%2F%3E%0A%20%20%3Crect%20x%3D%221490%22%20y%3D%22270%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%23838d86%22%2F%3E%0A%20%20%3Crect%20x%3D%221640%22%20y%3D%22270%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%23838d86%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20510c210-38%20402-45%20590-25%20230%2024%20450%2052%20690%2022%20174-22%20352-43%20520-24v137H0z%22%20fill%3D%22%23c7c0b4%22%2F%3E%0A%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%236f7f6d%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M145%20430c-18-72%204-144%2028-212%22%20stroke-width%3D%228%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M188%20430c-10-90%2020-176%2064-246%22%20stroke-width%3D%227%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M151%20268c-44-18-80-18-124%200M161%20310c-47-7-83%204-119%2029M174%20238c30-34%2064-50%20116-48M184%20300c46-24%2088-27%20140-4%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M1550%20430c-22-86%200-174%2044-256M1595%20430c-4-74%2022-142%2074-210%22%20stroke-width%3D%228%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M1570%20270c-44-20-84-18-124%207M1590%20318c-52-7-92%207-130%2042M1607%20245c38-34%2080-46%20138-36M1620%20310c54-24%20102-24%20156%206%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Cg%20fill%3D%22%23839179%22%20opacity%3D%22.9%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2228%22%20cy%3D%22268%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2274%22%20cy%3D%22254%22%20r%3D%2212%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22126%22%20cy%3D%22274%22%20r%3D%2215%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22264%22%20cy%3D%22190%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22204%22%20r%3D%2211%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221446%22%20cy%3D%22276%22%20r%3D%2215%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221496%22%20cy%3D%22258%22%20r%3D%2212%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221743%22%20cy%3D%22210%22%20r%3D%2217%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221778%22%20cy%3D%22320%22%20r%3D%2214%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A"
+    },
+    {
+      id: "candidate03",
+      label: "候補 3",
+      title: "室内・オフィス",
+      src: "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201800%20620%22%20role%3D%22img%22%20aria-labelledby%3D%22title%20desc%22%3E%0A%20%20%3Ctitle%20id%3D%22title%22%3EWhat%20Office%20building%20visual%3C%2Ftitle%3E%0A%20%20%3Cdesc%20id%3D%22desc%22%3EA%20quiet%20street-level%20office%20facade%20with%20warm%20interior%20light%20and%20greenery.%3C%2Fdesc%3E%0A%20%20%3Crect%20width%3D%221800%22%20height%3D%22620%22%20fill%3D%22%23ece8df%22%2F%3E%0A%20%20%3Crect%20y%3D%22420%22%20width%3D%221800%22%20height%3D%22200%22%20fill%3D%22%23d8d2c7%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20420h1800%22%20stroke%3D%22%23c8c1b5%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%3Crect%20x%3D%220%22%20y%3D%2270%22%20width%3D%22520%22%20height%3D%22350%22%20fill%3D%22%23d7d1c8%22%2F%3E%0A%20%20%3Crect%20x%3D%2272%22%20y%3D%22118%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23b7b7ad%22%2F%3E%0A%20%20%3Crect%20x%3D%22232%22%20y%3D%22118%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23b7b7ad%22%2F%3E%0A%20%20%3Crect%20x%3D%2272%22%20y%3D%22250%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23c0bfb4%22%2F%3E%0A%20%20%3Crect%20x%3D%22232%22%20y%3D%22250%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23c0bfb4%22%2F%3E%0A%20%20%3Crect%20x%3D%22448%22%20y%3D%2244%22%20width%3D%22980%22%20height%3D%22376%22%20fill%3D%22%23cfc8bc%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M490%20112h870%22%20stroke%3D%22%239c968d%22%20stroke-width%3D%2218%22%2F%3E%0A%20%20%3Crect%20x%3D%22545%22%20y%3D%22166%22%20width%3D%22300%22%20height%3D%22254%22%20fill%3D%22%232f302d%22%2F%3E%0A%20%20%3Crect%20x%3D%22860%22%20y%3D%22166%22%20width%3D%22300%22%20height%3D%22254%22%20fill%3D%22%23242522%22%2F%3E%0A%20%20%3Crect%20x%3D%221175%22%20y%3D%22166%22%20width%3D%22220%22%20height%3D%22254%22%20fill%3D%22%23272823%22%2F%3E%0A%20%20%3Crect%20x%3D%22575%22%20y%3D%22190%22%20width%3D%22244%22%20height%3D%22206%22%20fill%3D%22%23e3c895%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%3Crect%20x%3D%22889%22%20y%3D%22190%22%20width%3D%22244%22%20height%3D%22206%22%20fill%3D%22%23dcbf83%22%20opacity%3D%22.7%22%2F%3E%0A%20%20%3Crect%20x%3D%221203%22%20y%3D%22190%22%20width%3D%22164%22%20height%3D%22206%22%20fill%3D%22%2393a08f%22%20opacity%3D%22.45%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M545%20166h850M545%20420h850M845%20166v254M1160%20166v254%22%20stroke%3D%22%23151513%22%20stroke-width%3D%2210%22%2F%3E%0A%20%20%3Crect%20x%3D%221425%22%20y%3D%2292%22%20width%3D%22375%22%20height%3D%22328%22%20fill%3D%22%23b7b6ad%22%2F%3E%0A%20%20%3Crect%20x%3D%221490%22%20y%3D%22142%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%238f9890%22%2F%3E%0A%20%20%3Crect%20x%3D%221640%22%20y%3D%22142%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%238f9890%22%2F%3E%0A%20%20%3Crect%20x%3D%221490%22%20y%3D%22270%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%23838d86%22%2F%3E%0A%20%20%3Crect%20x%3D%221640%22%20y%3D%22270%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%23838d86%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20510c210-38%20402-45%20590-25%20230%2024%20450%2052%20690%2022%20174-22%20352-43%20520-24v137H0z%22%20fill%3D%22%23c7c0b4%22%2F%3E%0A%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%236f7f6d%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M145%20430c-18-72%204-144%2028-212%22%20stroke-width%3D%228%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M188%20430c-10-90%2020-176%2064-246%22%20stroke-width%3D%227%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M151%20268c-44-18-80-18-124%200M161%20310c-47-7-83%204-119%2029M174%20238c30-34%2064-50%20116-48M184%20300c46-24%2088-27%20140-4%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M1550%20430c-22-86%200-174%2044-256M1595%20430c-4-74%2022-142%2074-210%22%20stroke-width%3D%228%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M1570%20270c-44-20-84-18-124%207M1590%20318c-52-7-92%207-130%2042M1607%20245c38-34%2080-46%20138-36M1620%20310c54-24%20102-24%20156%206%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Cg%20fill%3D%22%23839179%22%20opacity%3D%22.9%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2228%22%20cy%3D%22268%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2274%22%20cy%3D%22254%22%20r%3D%2212%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22126%22%20cy%3D%22274%22%20r%3D%2215%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22264%22%20cy%3D%22190%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22204%22%20r%3D%2211%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221446%22%20cy%3D%22276%22%20r%3D%2215%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221496%22%20cy%3D%22258%22%20r%3D%2212%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221743%22%20cy%3D%22210%22%20r%3D%2217%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221778%22%20cy%3D%22320%22%20r%3D%2214%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A"
+    },
+    {
+      id: "candidate04",
+      label: "候補 4",
+      title: "入口・共用部",
+      src: "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201800%20620%22%20role%3D%22img%22%20aria-labelledby%3D%22title%20desc%22%3E%0A%20%20%3Ctitle%20id%3D%22title%22%3EWhat%20Office%20building%20visual%3C%2Ftitle%3E%0A%20%20%3Cdesc%20id%3D%22desc%22%3EA%20quiet%20street-level%20office%20facade%20with%20warm%20interior%20light%20and%20greenery.%3C%2Fdesc%3E%0A%20%20%3Crect%20width%3D%221800%22%20height%3D%22620%22%20fill%3D%22%23ece8df%22%2F%3E%0A%20%20%3Crect%20y%3D%22420%22%20width%3D%221800%22%20height%3D%22200%22%20fill%3D%22%23d8d2c7%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20420h1800%22%20stroke%3D%22%23c8c1b5%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%3Crect%20x%3D%220%22%20y%3D%2270%22%20width%3D%22520%22%20height%3D%22350%22%20fill%3D%22%23d7d1c8%22%2F%3E%0A%20%20%3Crect%20x%3D%2272%22%20y%3D%22118%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23b7b7ad%22%2F%3E%0A%20%20%3Crect%20x%3D%22232%22%20y%3D%22118%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23b7b7ad%22%2F%3E%0A%20%20%3Crect%20x%3D%2272%22%20y%3D%22250%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23c0bfb4%22%2F%3E%0A%20%20%3Crect%20x%3D%22232%22%20y%3D%22250%22%20width%3D%22116%22%20height%3D%2292%22%20fill%3D%22%23c0bfb4%22%2F%3E%0A%20%20%3Crect%20x%3D%22448%22%20y%3D%2244%22%20width%3D%22980%22%20height%3D%22376%22%20fill%3D%22%23cfc8bc%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M490%20112h870%22%20stroke%3D%22%239c968d%22%20stroke-width%3D%2218%22%2F%3E%0A%20%20%3Crect%20x%3D%22545%22%20y%3D%22166%22%20width%3D%22300%22%20height%3D%22254%22%20fill%3D%22%232f302d%22%2F%3E%0A%20%20%3Crect%20x%3D%22860%22%20y%3D%22166%22%20width%3D%22300%22%20height%3D%22254%22%20fill%3D%22%23242522%22%2F%3E%0A%20%20%3Crect%20x%3D%221175%22%20y%3D%22166%22%20width%3D%22220%22%20height%3D%22254%22%20fill%3D%22%23272823%22%2F%3E%0A%20%20%3Crect%20x%3D%22575%22%20y%3D%22190%22%20width%3D%22244%22%20height%3D%22206%22%20fill%3D%22%23e3c895%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%3Crect%20x%3D%22889%22%20y%3D%22190%22%20width%3D%22244%22%20height%3D%22206%22%20fill%3D%22%23dcbf83%22%20opacity%3D%22.7%22%2F%3E%0A%20%20%3Crect%20x%3D%221203%22%20y%3D%22190%22%20width%3D%22164%22%20height%3D%22206%22%20fill%3D%22%2393a08f%22%20opacity%3D%22.45%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M545%20166h850M545%20420h850M845%20166v254M1160%20166v254%22%20stroke%3D%22%23151513%22%20stroke-width%3D%2210%22%2F%3E%0A%20%20%3Crect%20x%3D%221425%22%20y%3D%2292%22%20width%3D%22375%22%20height%3D%22328%22%20fill%3D%22%23b7b6ad%22%2F%3E%0A%20%20%3Crect%20x%3D%221490%22%20y%3D%22142%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%238f9890%22%2F%3E%0A%20%20%3Crect%20x%3D%221640%22%20y%3D%22142%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%238f9890%22%2F%3E%0A%20%20%3Crect%20x%3D%221490%22%20y%3D%22270%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%23838d86%22%2F%3E%0A%20%20%3Crect%20x%3D%221640%22%20y%3D%22270%22%20width%3D%22108%22%20height%3D%2288%22%20fill%3D%22%23838d86%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20510c210-38%20402-45%20590-25%20230%2024%20450%2052%20690%2022%20174-22%20352-43%20520-24v137H0z%22%20fill%3D%22%23c7c0b4%22%2F%3E%0A%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%236f7f6d%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M145%20430c-18-72%204-144%2028-212%22%20stroke-width%3D%228%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M188%20430c-10-90%2020-176%2064-246%22%20stroke-width%3D%227%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M151%20268c-44-18-80-18-124%200M161%20310c-47-7-83%204-119%2029M174%20238c30-34%2064-50%20116-48M184%20300c46-24%2088-27%20140-4%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M1550%20430c-22-86%200-174%2044-256M1595%20430c-4-74%2022-142%2074-210%22%20stroke-width%3D%228%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M1570%20270c-44-20-84-18-124%207M1590%20318c-52-7-92%207-130%2042M1607%20245c38-34%2080-46%20138-36M1620%20310c54-24%20102-24%20156%206%22%20stroke-width%3D%225%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Cg%20fill%3D%22%23839179%22%20opacity%3D%22.9%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2228%22%20cy%3D%22268%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2274%22%20cy%3D%22254%22%20r%3D%2212%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22126%22%20cy%3D%22274%22%20r%3D%2215%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22264%22%20cy%3D%22190%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22204%22%20r%3D%2211%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221446%22%20cy%3D%22276%22%20r%3D%2215%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221496%22%20cy%3D%22258%22%20r%3D%2212%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221743%22%20cy%3D%22210%22%20r%3D%2217%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%221778%22%20cy%3D%22320%22%20r%3D%2214%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A"
+    }
+  ]
+};
+
+  </script>
+  <script>
+(function () {
+  const content = window.WHAT_OFFICE_CONTENT;
+
+  function byId(id) {
+    return document.getElementById(id);
+  }
+
+  function visualById(id) {
+    return content.visuals.find((visual) => visual.id === id) || content.visuals[0];
+  }
+
+  function renderNav() {
+    const nav = byId("site-nav");
+    nav.innerHTML = content.nav
+      .map((item) => `<a href="${item.href}">${item.label}</a>`)
+      .join("");
+  }
+
+  function renderHero() {
+    const heroVisual = visualById(content.hero.visualId);
+    byId("hero-image").src = heroVisual.src;
+    byId("hero-image").alt = heroVisual.title;
+    byId("hero-kicker").textContent = content.hero.kicker;
+    byId("hero-title").innerHTML = `
+      <span class="title-set title-desktop">
+        ${content.hero.titleLines.map((line) => `<span>${line}</span>`).join("")}
+      </span>
+      <span class="title-set title-mobile">
+        ${(content.hero.mobileTitleLines || content.hero.titleLines).map((line) => `<span>${line}</span>`).join("")}
+      </span>
+    `;
+    byId("hero-copy").innerHTML = (content.hero.copyLines || [content.hero.copy])
+      .map((line) => `<span>${line}</span>`)
+      .join("");
+  }
+
+  function renderServices() {
+    const isSingleService = content.services.length === 1;
+    byId("services-list").innerHTML = content.services
+      .map((service, index) => `
+        <article class="service-item">
+          ${isSingleService ? "" : `<span class="service-number">${String(index + 1).padStart(2, "0")}</span>`}
+          ${isSingleService ? "" : `<h3>${service.title}</h3>`}
+          <p>${service.text}</p>
+        </article>
+      `)
+      .join("");
+  }
+
+  function renderAbout() {
+    const aboutVisual = visualById(content.about.visualId);
+    byId("about-image").src = aboutVisual.src;
+    byId("about-image").alt = aboutVisual.title;
+    byId("about-kicker").textContent = content.about.kicker;
+    byId("about-subtitle").textContent = content.about.subtitle;
+    byId("about-title").textContent = content.about.title;
+    byId("about-body").innerHTML = content.about.paragraphs
+      .map((paragraph) => `<p>${paragraph}</p>`)
+      .join("");
+  }
+
+  function renderCompany() {
+    byId("company-list").innerHTML = content.company
+      .map(([label, value]) => `
+        <div class="company-row">
+          <dt>${label}</dt>
+          <dd>${value}</dd>
+        </div>
+      `)
+      .join("");
+  }
+
+  function renderVisualStrip() {
+    const stripA = visualById(content.visualSlots.stripA);
+    const stripB = visualById(content.visualSlots.stripB);
+    byId("strip-image-a").src = stripA.src;
+    byId("strip-image-a").alt = stripA.title;
+    byId("strip-image-b").src = stripB.src;
+    byId("strip-image-b").alt = stripB.title;
+  }
+
+  function renderContact() {
+    byId("contact-lead").textContent = content.contact.lead;
+    byId("contact-link").href = content.contact.formUrl;
+  }
+
+  renderNav();
+  renderHero();
+  renderServices();
+  renderAbout();
+  renderCompany();
+  renderVisualStrip();
+  renderContact();
+  byId("footer-year").textContent = new Date().getFullYear();
+})();
+
+  </script>
+</body>
+</html>
