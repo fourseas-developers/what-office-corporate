@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja" class="auth-locked">
 <head>
   <meta charset="utf-8">
@@ -7,7 +7,7 @@
   <meta name="description" content="What? Officeは、Webサイトを中心に情報発信を行いながら、オフィス・店舗の物件探しから契約までをサポートする事業用不動産仲介会社です。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
   <script>
     (function () {
       try {
@@ -41,7 +41,7 @@ body {
   margin: 0;
   background: var(--surface);
   color: var(--ink);
-  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  font-family: "Newsreader", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
   line-height: 1.8;
   letter-spacing: 0;
 }
@@ -61,7 +61,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  padding: 26px 72px;
+  padding: 24px 72px;
   background: var(--surface);
   border-bottom: 1px solid var(--line);
 }
@@ -73,33 +73,38 @@ a {
   min-width: 0;
 }
 
-.brand-mark {
-  width: 28px;
-  height: 28px;
-  flex: 0 0 auto;
+.brand-logo {
+  display: block;
+  height: 20px;
+  width: auto;
+  color: var(--ink);
+  fill: currentColor;
 }
 
-.brand-name {
-  color: var(--ink);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1;
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
   white-space: nowrap;
+  border: 0;
 }
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 30px;
+  gap: 32px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .nav a {
-  padding: 4px 0;
+  padding: 8px 0;
 }
 
 .nav a:hover,
@@ -107,9 +112,42 @@ a {
   color: var(--ink);
 }
 
+.nav-toggle {
+  display: none;
+  position: relative;
+  z-index: 60;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  margin: -10px -12px -10px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform 200ms ease;
+}
+
+.nav-open .nav-toggle-bar:first-child {
+  transform: translateY(3.75px) rotate(45deg);
+}
+
+.nav-open .nav-toggle-bar:last-child {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
 .hero {
   position: relative;
-  padding: 172px 64px 120px;
+  padding: 160px 64px 112px;
   overflow: hidden;
   text-align: center;
   isolation: isolate;
@@ -127,25 +165,18 @@ a {
 
 .eyebrow,
 .section-kicker {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   color: var(--muted-light);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.4;
-  letter-spacing: 0.32em;
-}
-
-.hero .eyebrow {
-  margin-bottom: 48px;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.3em;
 }
 
 .hero-title {
   display: block;
   max-width: 760px;
   margin: 0 auto 40px;
-  font-family: "Space Grotesk", "Noto Sans JP", sans-serif;
   font-size: 64px;
   font-weight: 600;
   line-height: 1.2;
@@ -153,6 +184,14 @@ a {
 
 .hero-title span {
   display: block;
+}
+
+.hero-title .title-logo {
+  display: block;
+  width: min(100%, 460px);
+  height: auto;
+  margin: 0 auto;
+  fill: currentColor;
 }
 
 .title-set {
@@ -166,10 +205,12 @@ a {
 
 .hero-copy {
   max-width: 480px;
-  margin: 0 auto 48px;
+  margin: 0 auto;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 2.1;
+  font-size: 15px;
+  line-height: 2;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .hero-copy span {
@@ -177,9 +218,10 @@ a {
 }
 
 .hero-copy span:first-child {
+  margin-bottom: 4px;
   color: var(--ink);
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 21px;
+  font-weight: 500;
 }
 
 .button-link {
@@ -188,13 +230,13 @@ a {
   justify-content: center;
   gap: 14px;
   width: fit-content;
-  min-height: 50px;
+  min-height: 52px;
   margin-top: 0;
-  padding: 15px 30px;
+  padding: 14px 32px;
   border: 1px solid var(--ink);
   border-radius: 0;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.08em;
   transition: background 160ms ease, color 160ms ease;
@@ -222,7 +264,6 @@ a {
 }
 
 .button-arrow {
-  font-family: "Space Grotesk", sans-serif;
   line-height: 1;
 }
 
@@ -274,7 +315,7 @@ a {
 }
 
 .section-subtitle {
-  margin: -8px 0 22px;
+  margin: 0 0 20px;
   color: var(--ink);
   font-size: 16px;
   font-weight: 500;
@@ -283,17 +324,21 @@ a {
 
 .section-title {
   margin: 0;
-  font-family: "Newsreader", "Noto Sans JP", serif;
-  font-size: 30px;
-  font-weight: 300;
-  line-height: 1.45;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .lead-text {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 2;
+  text-wrap: pretty;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .service-grid {
@@ -311,15 +356,22 @@ a {
 }
 
 .service-item:only-child {
-  max-width: 860px;
+  max-width: none;
   margin: 0 auto;
+}
+
+.service-grid:has(.service-item:only-child) {
+  max-width: 960px;
+}
+
+.service-item p {
+  text-wrap: pretty;
 }
 
 .service-number {
   display: block;
   margin-bottom: 16px;
   color: #b6b0a3;
-  font-family: "Space Grotesk", sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -328,7 +380,7 @@ a {
 .service-item h3 {
   margin: 0 0 12px;
   color: var(--ink);
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.55;
 }
@@ -337,8 +389,10 @@ a {
 .body-copy p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.95;
+  font-size: 15px;
+  line-height: 2;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .service-item p + p,
@@ -360,24 +414,39 @@ a {
   max-width: none;
 }
 
+.about-copy .section-subtitle {
+  margin: 0 0 24px;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.inline-wordmark {
+  display: inline-block;
+  height: 0.75em;
+  width: auto;
+  fill: currentColor;
+}
+
 .about-copy .section-title {
   max-width: 680px;
   margin: 0 auto;
-  font-size: 36px;
+  font-size: 28px;
   line-height: 1.6;
 }
 
 .body-copy {
   display: grid;
-  gap: 14px;
+  gap: 8px;
   max-width: 640px;
-  margin: 36px auto 0;
+  margin: 40px auto 0;
 }
 
 .body-copy p {
   color: #5f5b53;
   font-size: 15px;
-  line-height: 2.2;
+  line-height: 2;
+  text-wrap: pretty;
 }
 
 .company-layout {
@@ -386,18 +455,14 @@ a {
   margin: 0 auto;
 }
 
-.company-layout .section-heading {
-  margin-bottom: 52px;
-}
-
 .company-list {
   display: grid;
   grid-template-columns: 180px 1fr;
   row-gap: 20px;
-  column-gap: 24px;
+  column-gap: 32px;
   margin: 0;
   text-align: left;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .company-row {
@@ -405,7 +470,7 @@ a {
 }
 
 .company-row dt {
-  color: var(--muted-light);
+  color: var(--muted);
   font-weight: 400;
 }
 
@@ -424,14 +489,14 @@ a {
 }
 
 .contact-section .section-title {
-  margin-bottom: 16px;
-  font-size: 40px;
+  margin-bottom: 20px;
+  font-size: 36px;
 }
 
 .contact-action {
   display: grid;
   justify-items: center;
-  gap: 28px;
+  gap: 32px;
 }
 
 .contact-action .lead-text {
@@ -440,10 +505,10 @@ a {
 }
 
 .site-footer {
-  padding: 44px 72px;
+  padding: 40px 72px;
   background: var(--ink);
   color: #cfcabf;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .footer-inner {
@@ -455,15 +520,15 @@ a {
   margin: 0 auto;
 }
 
-.footer-inner span:first-child {
-  color: #fff;
-  font-family: "Newsreader", serif;
-  font-size: 18px;
+.footer-brand svg {
+  display: block;
+  height: 15px;
+  width: auto;
+  fill: #fff;
 }
 
 .footer-inner span:last-child {
   color: #8d887d;
-  font-family: "Space Grotesk", sans-serif;
   font-weight: 500;
   letter-spacing: 0.1em;
 }
@@ -513,39 +578,45 @@ a {
 
 @media (max-width: 860px) {
   .site-header {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 22px 20px;
+    padding: 16px 35px;
+  }
+
+  .brand {
+    position: relative;
+    z-index: 60;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
   }
 
   .nav {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 8px 20px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    white-space: nowrap;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: var(--surface);
+    font-size: 16px;
+  }
+
+  .nav-open .nav {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 14px 24px;
+  }
+
+  body.nav-open {
+    overflow: hidden;
   }
 
   .hero {
-    padding: 96px 20px 78px;
-    text-align: left;
-  }
-
-  .hero .eyebrow {
-    margin-bottom: 32px;
-  }
-
-  .hero-title {
-    font-size: clamp(42px, 12vw, 56px);
-    line-height: 1.45;
-  }
-
-  .hero-inner,
-  .hero-title,
-  .hero-copy {
-    margin-left: 0;
-    margin-right: 0;
+    padding: 80px 35px;
   }
 
   .hero-title .title-desktop {
@@ -556,13 +627,20 @@ a {
     display: grid;
   }
 
+  .hero-title .title-logo {
+    width: min(100%, 300px);
+  }
+
+  .service-item p {
+    word-break: normal;
+  }
+
   .section {
-    padding: 86px 20px;
-    text-align: left;
+    padding: 80px 35px;
   }
 
   .section-heading {
-    text-align: left;
+    margin-bottom: 48px;
   }
 
   .visual-strip,
@@ -575,65 +653,48 @@ a {
     grid-template-columns: 1fr;
     gap: 44px;
     max-width: 520px;
-    margin-left: 0;
-    margin-right: 0;
   }
 
-  .about-layout,
-  .company-layout,
-  .contact-layout,
-  .about-copy .section-title,
-  .body-copy,
-  .contact-action .lead-text {
-    margin-left: 0;
-    margin-right: 0;
+  .body-copy {
+    margin-top: 32px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .about-copy .section-subtitle {
+    font-size: 28px;
   }
 
   .about-copy .section-title {
-    font-size: 32px;
+    font-size: 23px;
   }
 
   .company-list {
-    grid-template-columns: 1fr;
-    row-gap: 6px;
-  }
-
-  .company-row dt {
-    margin-top: 16px;
-  }
-
-  .company-row:first-child dt {
-    margin-top: 0;
-  }
-
-  .contact-action {
-    justify-items: start;
+    grid-template-columns: 96px 1fr;
+    column-gap: 20px;
+    row-gap: 14px;
+    text-align: left;
   }
 
   .footer-inner {
-    align-items: flex-start;
     flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
   }
 }
 
 @media (max-width: 520px) {
-  .brand-mark {
-    width: 24px;
-    height: 24px;
-  }
-
-  .brand-name {
-    font-size: 12px;
-  }
-
-  .nav {
-    font-size: 12px;
+  .brand-logo {
+    height: 16px;
   }
 
   .hero-copy,
   .body-copy p,
   .lead-text {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .button-link {
@@ -673,10 +734,14 @@ a {
 }
 
 .auth-panel h1 {
-  margin: 0 0 6px;
-  font-family: "Space Grotesk", "Noto Sans JP", sans-serif;
-  font-size: 28px;
-  line-height: 1.3;
+  margin: 0 0 12px;
+}
+
+.auth-panel h1 svg {
+  display: block;
+  height: 22px;
+  width: auto;
+  fill: currentColor;
 }
 
 .auth-panel p {
@@ -729,9 +794,17 @@ a {
 </style>
 </head>
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="wo-wordmark" d="M1898 74V111Q1845 111 1812 130Q1779 149 1749 201Q1729 236 1686 368L1308 1461H1268L959 594L652 1461H616L213 335Q168 209 156 186Q136 148 102 130Q67 111 8 111V74H510V111H486Q433 111 405 135Q377 159 377 193Q377 228 421 354L688 1115L913 468L873 354L841 263Q820 213 794 175Q781 156 762 143Q737 125 712 117Q693 111 652 111V74H1180V111H1144Q1088 111 1062 135Q1036 159 1036 200Q1036 251 1081 378L1341 1115L1599 368Q1643 244 1643 196Q1643 173 1628 153Q1614 133 1592 125Q1554 111 1493 111V74ZM2247 8V678Q2358 556 2423 522Q2488 487 2553 487Q2631 487 2687 530Q2743 573 2770 665Q2789 729 2789 899V1223Q2789 1310 2803 1342Q2813 1366 2837 1380Q2861 1394 2925 1394V1430H2475V1394H2496Q2560 1394 2585 1374Q2610 1355 2620 1317Q2623 1301 2623 1223V899Q2623 749 2608 702Q2592 655 2558 632Q2524 608 2476 608Q2427 608 2374 634Q2321 660 2247 739V1223Q2247 1317 2258 1340Q2268 1363 2296 1378Q2325 1394 2395 1394V1430H1941V1394Q2002 1394 2037 1375Q2057 1365 2069 1337Q2081 1309 2081 1223V394Q2081 237 2074 201Q2066 165 2050 152Q2035 139 2009 139Q1988 139 1941 155L1927 120L2201 8ZM3521 1298Q3380 1407 3344 1424Q3290 1449 3229 1449Q3134 1449 3072 1384Q3011 1319 3011 1213Q3011 1146 3041 1097Q3082 1029 3184 969Q3285 909 3521 823V787Q3521 650 3478 599Q3434 548 3351 548Q3288 548 3251 582Q3213 616 3213 660L3215 718Q3215 764 3192 789Q3168 814 3130 814Q3093 814 3070 788Q3046 762 3046 717Q3046 631 3134 559Q3222 487 3381 487Q3503 487 3581 528Q3640 559 3668 625Q3686 668 3686 801V1112Q3686 1243 3691 1272Q3696 1302 3708 1312Q3719 1322 3734 1322Q3750 1322 3762 1315Q3783 1302 3843 1242V1298Q3731 1448 3629 1448Q3580 1448 3551 1414Q3522 1380 3521 1298ZM3521 1233V884Q3370 944 3326 969Q3247 1013 3213 1061Q3179 1109 3179 1166Q3179 1238 3222 1286Q3265 1333 3321 1333Q3397 1333 3521 1233ZM4177 213V514H4391V584H4177V1178Q4177 1267 4202 1298Q4228 1329 4268 1329Q4301 1329 4332 1308Q4363 1288 4380 1248H4419Q4384 1346 4320 1396Q4256 1445 4188 1445Q4142 1445 4098 1420Q4054 1394 4033 1346Q4012 1299 4012 1200V584H3867V551Q3922 529 3980 476Q4037 424 4082 352Q4105 314 4146 213ZM4870 1110H4829Q4836 984 4860 902Q4885 819 4962 672Q5022 559 5040 498Q5058 438 5058 376Q5058 249 4990 174Q4923 99 4825 99Q4738 99 4688 140Q4638 181 4638 229Q4638 266 4668 320Q4698 374 4698 402Q4698 438 4675 462Q4652 487 4619 487Q4577 487 4542 446Q4508 404 4508 330Q4508 217 4605 130Q4702 43 4868 43Q5074 43 5171 163Q5243 251 5243 358Q5243 431 5210 508Q5178 585 5087 689Q4942 853 4910 922Q4877 990 4870 1110ZM4856 1234Q4903 1234 4936 1266Q4968 1299 4968 1346Q4968 1392 4935 1424Q4902 1457 4856 1457Q4810 1457 4778 1424Q4745 1392 4745 1346Q4745 1299 4778 1266Q4810 1234 4856 1234ZM6586 43Q6850 43 7044 244Q7237 444 7237 744Q7237 1053 7042 1257Q6847 1461 6570 1461Q6290 1461 6100 1262Q5909 1063 5909 747Q5909 424 6129 220Q6320 43 6586 43ZM6567 116Q6385 116 6275 251Q6138 419 6138 743Q6138 1075 6280 1254Q6389 1390 6568 1390Q6759 1390 6884 1241Q7008 1092 7008 771Q7008 423 6871 252Q6761 116 6567 116ZM7738 586V1188Q7738 1316 7766 1350Q7803 1394 7865 1394H7948V1430H7401V1394H7442Q7482 1394 7515 1374Q7548 1354 7560 1320Q7573 1286 7573 1188V586H7395V514H7573V454Q7573 317 7617 222Q7661 127 7752 68Q7842 10 7955 10Q8060 10 8148 78Q8206 123 8206 179Q8206 209 8180 236Q8154 262 8124 262Q8101 262 8076 246Q8050 229 8013 174Q7976 120 7945 101Q7914 82 7876 82Q7830 82 7798 106Q7766 131 7752 182Q7738 234 7738 448V514H7974V586ZM8383 586V1188Q8383 1316 8411 1350Q8448 1394 8510 1394H8593V1430H8046V1394H8087Q8127 1394 8160 1374Q8193 1354 8206 1320Q8218 1286 8218 1188V586H8040V514H8218V454Q8218 317 8262 222Q8306 127 8396 68Q8487 10 8600 10Q8705 10 8793 78Q8851 123 8851 179Q8851 209 8825 236Q8799 262 8769 262Q8746 262 8720 246Q8695 229 8658 174Q8621 120 8590 101Q8559 82 8521 82Q8475 82 8443 106Q8411 131 8397 182Q8383 234 8383 448V514H8619V586ZM8940 8Q8982 8 9012 38Q9041 67 9041 109Q9041 151 9012 181Q8982 211 8940 211Q8898 211 8868 181Q8838 151 8838 109Q8838 67 8868 38Q8897 8 8940 8ZM9023 487V1223Q9023 1309 9036 1338Q9048 1366 9072 1380Q9097 1394 9162 1394V1430H8717V1394Q8784 1394 8807 1381Q8830 1368 8844 1338Q8857 1308 8857 1223V870Q8857 721 8848 677Q8841 645 8826 632Q8811 620 8785 620Q8757 620 8717 635L8703 599L8979 487ZM10054 1082Q10017 1263 9909 1360Q9801 1458 9670 1458Q9514 1458 9398 1327Q9282 1196 9282 973Q9282 757 9410 622Q9539 487 9719 487Q9854 487 9941 558Q10028 630 10028 707Q10028 745 10004 768Q9979 792 9935 792Q9876 792 9846 754Q9829 733 9824 674Q9818 615 9783 584Q9748 554 9686 554Q9586 554 9525 628Q9444 726 9444 887Q9444 1051 9524 1176Q9605 1302 9742 1302Q9840 1302 9918 1235Q9973 1189 10025 1068ZM10339 859Q10338 1063 10438 1179Q10538 1295 10673 1295Q10763 1295 10830 1246Q10896 1196 10941 1076L10972 1096Q10951 1233 10850 1346Q10749 1458 10597 1458Q10432 1458 10314 1330Q10197 1201 10197 984Q10197 749 10318 618Q10438 486 10620 486Q10774 486 10873 588Q10972 689 10972 859ZM10339 801H10763Q10758 713 10742 677Q10717 621 10668 589Q10618 557 10564 557Q10481 557 10416 622Q10350 686 10339 801Z"/>
+    </defs>
+  </svg>
   <section class="auth-gate" aria-labelledby="auth-title">
     <form class="auth-panel" id="auth-form" autocomplete="off">
-      <h1 id="auth-title">What? Office</h1>
+      <h1 id="auth-title">
+        <svg viewBox="0 0 10980 1469" aria-hidden="true" focusable="false"><use href="#wo-wordmark"></use></svg>
+        <span class="visually-hidden">What? Office</span>
+      </h1>
       <p>Preview access</p>
       <label class="auth-field">
         ID
@@ -747,9 +820,12 @@ a {
   </section>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="What? Office">
-      <img src="data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%221.0%22%3F%3E%0A%3Csvg%20id%3D%22_%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC_1%22%20data-name%3D%22%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%201%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20600%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Cpath%20class%3D%22cls-1%22%20d%3D%22M376.02%2C247.21l-51.97%2C150.27h-5.5l-42.48-119.2-42.21%2C119.2h-4.95l-55.41-154.8c-4.22-11.73-6.83-18.56-7.84-20.48-1.83-3.48-4.31-6.07-7.42-7.77-3.12-1.69-7.42-2.54-12.92-2.54v-5.09h69.02v5.09h-3.3c-4.95%2C0-8.68%2C1.1-11.21%2C3.3-2.52%2C2.2-3.78%2C4.86-3.78%2C7.97%2C0%2C1.56.48%2C4.19%2C1.44%2C7.91.96%2C3.71%2C2.5%2C8.45%2C4.61%2C14.23l36.71%2C104.62%2C30.93-88.95-9.9-28.18c-1.47-3.39-2.96-6.37-4.47-8.94-1.51-2.57-3.25-4.74-5.22-6.53-1.97-1.79-4.26-3.14-6.87-4.06-2.61-.92-5.75-1.37-9.42-1.37v-5.09h72.59v5.09h-4.95c-5.22%2C0-9.01%2C1.08-11.34%2C3.23-2.34%2C2.15-3.51%2C5.16-3.51%2C9%2C0%2C4.67%2C2.06%2C12.83%2C6.19%2C24.47l35.75%2C101.32%2C35.47-102.7c4.03-11.55%2C6.05-19.43%2C6.05-23.65%22%3E%3C%2Fpath%3E%0A%20%20%3Cpath%20class%3D%22cls-1%22%20d%3D%22M403.4%2C349.22h-5.64c.73-11.73%2C2.15-21.26%2C4.26-28.6%2C1.1-3.85%2C2.84-8.39%2C5.22-13.61%2C2.38-5.22%2C5.31-11.23%2C8.8-18.01%2C2.66-5.22%2C4.9-9.81%2C6.74-13.75%2C1.83-3.94%2C3.16-7.29%2C3.99-10.04%2C1.65-5.59%2C2.47-11.23%2C2.47-16.91s-.85-11.02-2.54-15.74c-1.7-4.72-3.99-8.73-6.87-12.03-2.89-3.3-6.28-5.84-10.17-7.63-3.9-1.79-8.04-2.68-12.44-2.68-4.03%2C0-7.63.53-10.79%2C1.58-3.16%2C1.05-5.84%2C2.43-8.04%2C4.12-2.2%2C1.7-3.9%2C3.6-5.09%2C5.7-1.19%2C2.11-1.79%2C4.26-1.79%2C6.46%2C0%2C1.56.43%2C3.46%2C1.31%2C5.71.87%2C2.25%2C1.81%2C4.51%2C2.82%2C6.8%2C1.01%2C2.29%2C1.95%2C4.47%2C2.82%2C6.53.87%2C2.06%2C1.31%2C3.64%2C1.31%2C4.74%2C0%2C3.3-1.06%2C6.07-3.16%2C8.32-2.11%2C2.25-4.67%2C3.37-7.7%2C3.37-1.92%2C0-3.8-.48-5.64-1.44-1.83-.96-3.46-2.38-4.88-4.26-1.42-1.88-2.57-4.15-3.44-6.8-.87-2.66-1.31-5.68-1.31-9.07%2C0-5.04%2C1.14-9.94%2C3.44-14.71%2C2.29-4.76%2C5.57-8.98%2C9.83-12.65%2C4.26-3.67%2C9.46-6.6%2C15.6-8.8%2C6.14-2.2%2C13.01-3.3%2C20.62-3.3%2C8.06%2C0%2C15.28%2C1.15%2C21.65%2C3.44%2C6.37%2C2.29%2C11.78%2C5.39%2C16.22%2C9.28%2C4.45%2C3.9%2C7.84%2C8.48%2C10.17%2C13.75%2C2.34%2C5.27%2C3.51%2C10.89%2C3.51%2C16.84%2C0%2C6.78-1.51%2C13.66-4.54%2C20.62-1.56%2C3.48-3.71%2C7.31-6.46%2C11.48-2.75%2C4.17-6.23%2C8.64-10.45%2C13.4-13.2%2C14.85-21.36%2C25.53-24.47%2C32.03-2.84%2C6.14-4.63%2C14.76-5.36%2C25.85ZM401.47%2C366.27c4.4%2C0%2C8.06%2C1.47%2C11%2C4.4%2C2.93%2C2.93%2C4.4%2C6.6%2C4.4%2C11%2C0%2C2.11-.41%2C4.08-1.24%2C5.91-.82%2C1.84-1.92%2C3.44-3.3%2C4.81-1.37%2C1.37-3%2C2.47-4.88%2C3.3-1.88.82-3.87%2C1.24-5.98%2C1.24s-4.08-.41-5.91-1.24c-1.83-.82-3.44-1.92-4.81-3.3-1.37-1.37-2.47-2.98-3.3-4.81-.82-1.83-1.24-3.8-1.24-5.91s.41-4.24%2C1.24-6.12c.82-1.88%2C1.92-3.51%2C3.3-4.88%2C1.37-1.37%2C2.98-2.45%2C4.81-3.23%2C1.83-.78%2C3.8-1.17%2C5.91-1.17Z%22%3E%3C%2Fpath%3E%0A%3C%2Fsvg%3E" alt="" class="brand-mark">
-      <span class="brand-name">What? Office</span>
+      <svg class="brand-logo" viewBox="0 0 10980 1469" aria-hidden="true" focusable="false"><use href="#wo-wordmark"></use></svg>
     </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
     <nav class="nav" aria-label="主要ナビゲーション" id="site-nav"></nav>
   </header>
 
@@ -758,13 +834,8 @@ a {
       <img class="hero-image" id="hero-image" src="" alt="">
       <div class="hero-overlay"></div>
       <div class="hero-inner">
-        <p class="eyebrow" id="hero-kicker"></p>
         <h1 class="hero-title" id="hero-title"></h1>
         <p class="hero-copy" id="hero-copy"></p>
-        <a class="button-link" id="hero-cta" href="#contact">
-          <span>お問い合わせ</span>
-          <span aria-hidden="true" class="button-arrow">→</span>
-        </a>
       </div>
     </section>
 
@@ -827,7 +898,10 @@ a {
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>What? Office</span>
+      <span class="footer-brand">
+        <svg viewBox="0 0 10980 1469" aria-hidden="true" focusable="false"><use href="#wo-wordmark"></use></svg>
+        <span class="visually-hidden">What? Office</span>
+      </span>
       <span>© <span id="footer-year"></span> WHAT OFFICE Inc.</span>
     </div>
   </footer>
@@ -844,7 +918,6 @@ window.WHAT_OFFICE_CONTENT = {
 
   hero: {
     visualId: "candidate01",
-    kicker: "W?",
     titleLines: ["What? Office"],
     mobileTitleLines: ["What? Office"],
     copyLines: ["未来を想像できること。", "事業用不動産仲介。"]
@@ -941,17 +1014,23 @@ window.WHAT_OFFICE_CONTENT = {
       .join("");
   }
 
+  function titleLineMarkup(line) {
+    if (line === "What? Office") {
+      return `<span><svg class="title-logo" viewBox="0 0 10980 1469" role="img" aria-label="What? Office"><use href="#wo-wordmark"></use></svg></span>`;
+    }
+    return `<span>${line}</span>`;
+  }
+
   function renderHero() {
     const heroVisual = visualById(content.hero.visualId);
     byId("hero-image").src = heroVisual.src;
     byId("hero-image").alt = heroVisual.title;
-    byId("hero-kicker").textContent = content.hero.kicker;
     byId("hero-title").innerHTML = `
       <span class="title-set title-desktop">
-        ${content.hero.titleLines.map((line) => `<span>${line}</span>`).join("")}
+        ${content.hero.titleLines.map(titleLineMarkup).join("")}
       </span>
       <span class="title-set title-mobile">
-        ${(content.hero.mobileTitleLines || content.hero.titleLines).map((line) => `<span>${line}</span>`).join("")}
+        ${(content.hero.mobileTitleLines || content.hero.titleLines).map(titleLineMarkup).join("")}
       </span>
     `;
     byId("hero-copy").innerHTML = (content.hero.copyLines || [content.hero.copy])
@@ -977,7 +1056,10 @@ window.WHAT_OFFICE_CONTENT = {
     byId("about-image").src = aboutVisual.src;
     byId("about-image").alt = aboutVisual.title;
     byId("about-kicker").textContent = content.about.kicker;
-    byId("about-subtitle").textContent = content.about.subtitle;
+    byId("about-subtitle").innerHTML = content.about.subtitle.replace(
+      "What? Office",
+      '<svg class="inline-wordmark" viewBox="0 0 10980 1469" role="img" aria-label="What? Office"><use href="#wo-wordmark"></use></svg>'
+    );
     byId("about-title").textContent = content.about.title;
     byId("about-body").innerHTML = content.about.paragraphs
       .map((paragraph) => `<p>${paragraph}</p>`)
@@ -1017,6 +1099,28 @@ window.WHAT_OFFICE_CONTENT = {
   renderVisualStrip();
   renderContact();
   byId("footer-year").textContent = new Date().getFullYear();
+
+  const navToggle = byId("nav-toggle");
+
+  function closeNav() {
+    document.body.classList.remove("nav-open");
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+
+  navToggle.addEventListener("click", () => {
+    const open = document.body.classList.toggle("nav-open");
+    navToggle.setAttribute("aria-expanded", String(open));
+  });
+
+  byId("site-nav").addEventListener("click", (event) => {
+    if (event.target.closest("a")) closeNav();
+  });
+
+  document.querySelector(".brand").addEventListener("click", closeNav);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeNav();
+  });
 })();
 
   </script>
