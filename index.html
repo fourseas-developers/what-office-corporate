@@ -270,7 +270,7 @@ a {
 
 .visual-strip {
   position: relative;
-  height: 280px;
+  height: clamp(260px, 26vw, 440px);
   overflow: hidden;
   background: var(--paper);
   border-top: 1px solid var(--line-strong);
@@ -335,7 +335,7 @@ a {
 
 .section-title {
   margin: 0;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 1.5;
   word-break: keep-all;
@@ -427,9 +427,21 @@ a {
 
 .about-copy .section-subtitle {
   margin: 0 0 24px;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 1.5;
+}
+
+#services-subtitle {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+#services-title {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.55;
 }
 
 .inline-wordmark {
@@ -670,11 +682,19 @@ a {
   }
 
   .section-title {
-    font-size: 28px;
+    font-size: 22px;
   }
 
   .about-copy .section-subtitle {
-    font-size: 28px;
+    font-size: 22px;
+  }
+
+  #services-subtitle {
+    font-size: 22px;
+  }
+
+  #services-title {
+    font-size: 17px;
   }
 
   .about-copy .section-title {
@@ -693,6 +713,27 @@ a {
     align-items: center;
     gap: 12px;
     text-align: center;
+  }
+}
+
+@media (min-width: 861px) {
+  .about-layout {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .about-copy {
+    text-align: left;
+  }
+
+  .about-copy .section-title {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .about-copy .body-copy {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -762,7 +803,7 @@ a {
       <div class="section-inner">
         <div class="section-heading">
           <p class="section-kicker">What We Do</p>
-          <p class="section-subtitle">私たちの事業</p>
+          <p class="section-subtitle" id="services-subtitle">私たちの事業</p>
           <h2 class="section-title" id="services-title">事業用不動産仲介</h2>
         </div>
         <div class="service-grid" id="services-list"></div>
@@ -832,11 +873,11 @@ window.WHAT_OFFICE_CONTENT = {
     visualId: "candidate04",
     kicker: "What We Value",
     subtitle: "What? Officeの考え方",
-    title: "未来を想像できることが、納得のいく決断につながる。",
+    title: "未来を想像できることが、<br>納得のいく決断につながる。",
     paragraphs: [
       "私たちは、そう考えています。",
       "物件を探す時に知りたいのは、賃料や面積だけではありません。",
-      "その場所で働く毎日や、街の雰囲気。自分たちに合う空間かどうか。",
+      "その場所で働く毎日や、街の雰囲気。<br>自分たちに合う空間かどうか。",
       "未来を想像するために、本質を見極め、必要な情報を誠実に届けます。それは、Webサイトでも、実際にお会いした時でも変わりません。やるべきことをやり切って、最後は自信を持って委ねます。",
       "自分たちらしい選択を、納得して決断できる状態をつくること。",
       "それが、What? Officeです。"
@@ -967,7 +1008,7 @@ window.WHAT_OFFICE_CONTENT = {
       "What? Office",
       '<svg class="inline-wordmark" viewBox="0 0 10980 1469" role="img" aria-label="What? Office"><use href="#wo-wordmark"></use></svg>'
     );
-    byId("about-title").textContent = content.about.title;
+    byId("about-title").innerHTML = content.about.title;
     byId("about-body").innerHTML = content.about.paragraphs
       .map((paragraph) => `<p>${paragraph}</p>`)
       .join("");
