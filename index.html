@@ -718,22 +718,31 @@ a {
 
 @media (min-width: 861px) {
   .about-layout {
+    max-width: 1040px;
     margin-left: 0;
     margin-right: 0;
   }
 
   .about-copy {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 0 64px;
+    align-items: start;
     text-align: left;
   }
 
+  .about-label {
+    padding-top: 4px;
+  }
+
   .about-copy .section-title {
-    margin-left: 0;
-    margin-right: 0;
+    max-width: 600px;
+    margin: 0 0 32px;
   }
 
   .about-copy .body-copy {
-    margin-left: 0;
-    margin-right: 0;
+    max-width: 600px;
+    margin: 0;
   }
 }
 
@@ -791,10 +800,14 @@ a {
           <img id="about-image" src="" alt="">
         </figure>
         <div class="about-copy">
-          <p class="section-kicker" id="about-kicker"></p>
-          <p class="section-subtitle" id="about-subtitle"></p>
-          <h2 class="section-title" id="about-title"></h2>
-          <div class="body-copy" id="about-body"></div>
+          <div class="about-label">
+            <p class="section-kicker" id="about-kicker"></p>
+            <p class="section-subtitle" id="about-subtitle"></p>
+          </div>
+          <div class="about-statement">
+            <h2 class="section-title" id="about-title"></h2>
+            <div class="body-copy" id="about-body"></div>
+          </div>
         </div>
       </div>
     </section>
