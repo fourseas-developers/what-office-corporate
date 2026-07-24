@@ -450,6 +450,23 @@ a {
   line-height: 1.5;
 }
 
+.about-statement::before,
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.about-statement::before {
+  margin: 8px auto 32px;
+}
+
+.section-heading::after {
+  margin: 24px auto 0;
+}
+
 #services-subtitle {
   font-size: 24px;
   font-weight: 400;
@@ -526,7 +543,11 @@ a {
 }
 
 .contact-section .section-heading {
-  margin-bottom: 0;
+  margin-bottom: 32px;
+}
+
+.contact-section .section-heading::after {
+  display: none;
 }
 
 .contact-section .section-title {
@@ -540,7 +561,7 @@ a {
   gap: 32px;
 }
 
-.contact-action .lead-text {
+.contact-section .lead-text {
   max-width: 480px;
   margin: 0 auto;
 }
@@ -742,11 +763,8 @@ a {
   }
 
   .about-copy {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 64px;
-    align-items: start;
-    text-align: left;
+    display: block;
+    text-align: center;
   }
 
   .about-label {
@@ -755,11 +773,12 @@ a {
   }
 
   .about-copy .section-title {
-    margin: 0 0 32px;
+    margin: 0 auto 32px;
   }
 
   .about-copy .body-copy {
-    margin: 0;
+    margin: 0 auto;
+    text-align: center;
   }
 }
 
@@ -829,14 +848,16 @@ a {
       </div>
     </section>
 
-    <section class="section section-muted" id="services" aria-labelledby="services-title">
+    <section class="section section-muted" id="services" aria-labelledby="services-subtitle">
       <div class="section-inner">
         <div class="section-heading">
           <p class="section-kicker">What We Do</p>
-          <p class="section-subtitle" id="services-subtitle">私たちの事業</p>
-          <h2 class="section-title" id="services-title">事業用不動産仲介</h2>
+          <h2 class="section-subtitle" id="services-subtitle">私たちの事業</h2>
         </div>
-        <div class="service-grid" id="services-list"></div>
+        <div class="service-group">
+          <h3 class="section-title" id="services-title">事業用不動産仲介</h3>
+          <div class="service-grid" id="services-list"></div>
+        </div>
       </div>
     </section>
 
@@ -852,12 +873,11 @@ a {
 
     <section class="section contact-section" id="contact" aria-labelledby="contact-title">
       <div class="section-inner contact-layout">
-        <div>
-          <p class="section-kicker">What Is Next</p>
+        <div class="section-heading">
           <h2 class="section-title" id="contact-title">お問い合わせ</h2>
+          <p class="lead-text" id="contact-lead"></p>
         </div>
         <div class="contact-action">
-          <p class="lead-text" id="contact-lead"></p>
           <a class="button-link dark" id="contact-link" href="#" target="_blank" rel="noopener">
             <span>お問い合わせフォームへ</span>
             <span aria-hidden="true" class="button-arrow">→</span>
