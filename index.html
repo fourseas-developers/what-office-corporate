@@ -277,24 +277,42 @@ a {
   border-bottom: 1px solid var(--line-strong);
 }
 
-.visual-strip img {
-  position: absolute;
-  inset: 0;
+.visual-strip > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0;
-  transition: opacity 1600ms ease;
+  display: block;
 }
 
-.visual-strip img.is-active {
-  opacity: 1;
+.visual-strip-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  animation: visual-strip-scroll 72s linear infinite;
+}
+
+.visual-strip-track img {
+  flex: 0 0 auto;
+  width: 33.334vw;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@keyframes visual-strip-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .visual-strip img {
-    transition: none;
+  .visual-strip-track {
+    animation: none;
   }
 }
 
@@ -732,7 +750,8 @@ a {
   }
 
   .about-label {
-    padding-top: 4px;
+    align-self: center;
+    text-align: center;
   }
 
   .about-copy .section-title {
@@ -1039,23 +1058,22 @@ window.WHAT_OFFICE_CONTENT = {
   function renderVisualStrip() {
     const strip = byId("visual-strip");
     const slides = content.heroSlides || [];
-    strip.innerHTML = slides
-      .map((slide, index) => `<img src="${slide.src}" alt="${slide.alt}" class="${index === 0 ? "is-active" : ""}" loading="${index === 0 ? "eager" : "lazy"}">`)
+
+    if (slides.length <= 1) {
+      strip.innerHTML = slides
+        .map((slide) => `<img src="${slide.src}" alt="${slide.alt}" loading="eager">`)
+        .join("");
+      return;
+    }
+
+    const loopSlides = slides.concat(slides);
+    const track = loopSlides
+      .map((slide, index) => {
+        const isDuplicate = index >= slides.length;
+        return `<img src="${slide.src}" alt="${slide.alt}" loading="${isDuplicate ? "lazy" : "eager"}"${isDuplicate ? ' aria-hidden="true"' : ""}>`;
+      })
       .join("");
-
-    const images = Array.from(strip.querySelectorAll("img"));
-    if (images.length <= 1) return;
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
-
-    let activeIndex = 0;
-    setInterval(() => {
-      const nextIndex = (activeIndex + 1) % images.length;
-      images[activeIndex].classList.remove("is-active");
-      images[nextIndex].classList.add("is-active");
-      activeIndex = nextIndex;
-    }, 5000);
+    strip.innerHTML = `<div class="visual-strip-track">${track}</div>`;
   }
 
   function renderContact() {
