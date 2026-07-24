@@ -420,8 +420,8 @@ a {
   color: var(--muted);
   font-size: 15px;
   line-height: 2;
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 .service-item p + p,
@@ -496,15 +496,16 @@ a {
 .body-copy {
   display: grid;
   gap: 8px;
+  min-width: 0;
   max-width: 640px;
   margin: 40px auto 0;
 }
 
 .body-copy p {
+  min-width: 0;
   color: #5f5b53;
   font-size: 15px;
   line-height: 2;
-  text-wrap: pretty;
 }
 
 .company-layout {
